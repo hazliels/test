@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Undangan Riana Hazli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Parisienne&family=Nunito:wght@400;600;700&family=Amiri&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: tender, playful-elegant wedding invitation (dummy prototype)
+   IDEA a hand-drawn paper invitation that scrolls like an app, adapted from the reference
+   PICTURE doodle line art in maroon on cream: photo frames, rings, calendar strip, timeline
+   COLOUR cream ground, maroon ink, beige blobs, soft pink board behind the phone column
+   TYPE Fredoka outlined (bubble titles) + Parisienne (script) + Nunito (body) + Amiri (ayat)
+   LAYOUT one 430px phone column centred; URL simulator bar above it */
+:root{color-scheme:light;--board:#f3d3d6;--cream:#fbf5e6;--blob:#f1e4c6;--ink:#6e2a2a;--ink2:#8a4a45;--soft:#f6e9d2;--line:#e2cfae}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--board);color:var(--ink);font:16px/1.6 Nunito,system-ui,sans-serif;overflow-x:clip}
+.sim{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #ecd6d9;padding:10px 16px;font-size:13px;color:#5a3a3a}
+.sim .row{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.sim b{font-weight:700}
+.url{font-family:ui-monospace,Menlo,monospace;background:#faf1f2;border:1px solid #ecd6d9;border-radius:8px;padding:6px 10px;overflow-wrap:anywhere}
+.chip{font:inherit;border:1px solid #d9b9bd;background:#fff;color:#6e2a2a;border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer}
+.chip[aria-pressed=true]{background:#6e2a2a;color:#fff;border-color:#6e2a2a}
+.sim form{display:flex;gap:6px}
+.sim input{font:16px Nunito,sans-serif;border:1px solid #d9b9bd;border-radius:8px;padding:5px 10px;width:150px}
+.phone{max-width:430px;margin:0 auto;background:var(--cream);min-height:100svh;position:relative;border-inline:1px solid #e8c9cc}
+.ribbon{background:var(--ink);color:var(--cream);overflow:hidden;white-space:nowrap;font:22px/1.5 Parisienne,cursive;padding:4px 0}
+.ribbon span{display:inline-block;padding-left:100%;animation:mq 26s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.ribbon span{animation:none;padding-left:12px}}
+section{padding:44px 22px;position:relative;text-align:center}
+.bubble{font-family:Fredoka,sans-serif;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--cream);-webkit-text-stroke:1.6px var(--ink);paint-order:stroke fill;font-size:clamp(38px,11vw,52px);line-height:1.02;margin:0 0 14px}
+.script{font-family:Parisienne,cursive;font-weight:400;font-size:30px;line-height:1.2;margin:0}
+.lead{max-width:34ch;margin:10px auto 0}
+.small{font-size:13px;color:var(--ink2)}
+.blob{position:absolute;inset:auto;z-index:0;background:var(--blob);border-radius:46% 54% 60% 40%/52% 44% 56% 48%}
+section>*:not(.blob){position:relative;z-index:1}
+.doodle{stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 16px Nunito,sans-serif;color:var(--ink);background:transparent;border:0;min-height:52px;padding:10px 34px;position:relative;cursor:pointer;text-decoration:none}
+.btn svg.ring{position:absolute;inset:-6px -4px;width:calc(100% + 8px);height:calc(100% + 12px);pointer-events:none}
+.btn:focus-visible{outline:2px dashed var(--ink);outline-offset:6px}
+#opening{min-height:calc(100svh - 54px);display:flex;flex-direction:column;justify-content:center;gap:6px;padding-top:30px}
+.to{margin:26px auto 18px;padding:14px 18px;border:1.4px solid var(--ink);border-radius:18px;max-width:300px;background:var(--soft)}
+.to .who{font-weight:700;font-size:18px;min-height:28px}
+.shimmer{display:inline-block;width:190px;height:18px;border-radius:8px;background:linear-gradient(90deg,#ead8b8,#f7ecd7,#ead8b8);background-size:200% 100%;animation:sh 1.1s linear infinite;vertical-align:middle}
+@keyframes sh{to{background-position:-200% 0}}
+.frames{display:flex;justify-content:center;gap:18px;margin-top:8px}
+.frame{width:128px}
+.frame .ph{aspect-ratio:4/5;border:2px solid var(--ink);padding:6px;background:var(--cream);transform:rotate(-3deg)}
+.frame:nth-child(2) .ph{transform:rotate(3deg)}
+.ph svg{display:block;width:100%;height:100%}
+.ayat{font:24px/2 Amiri,serif;direction:rtl;margin:6px 0 12px}
+.cal{display:flex;justify-content:center;gap:6px;font:26px Parisienne,cursive;margin-top:6px;flex-wrap:wrap}
+.cal span{width:38px;height:46px;display:grid;place-items:center;position:relative}
+.cal .on{font-weight:700}
+.cal .on svg{position:absolute;inset:-6px;width:50px;height:58px}
+.prog{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:26px}
+.prog li{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;text-align:left}
+.prog li:nth-child(even){grid-template-columns:1fr 64px;text-align:right}
+.prog li:nth-child(even) svg{order:2}
+.prog .time{font:700 26px Fredoka,sans-serif;color:var(--ink)}
+.prog .what{font:28px/1.1 Parisienne,cursive}
+.prog p{margin:4px 0 0;font-size:14px}
+.prog a{display:inline-block;margin-top:8px;font-weight:700;color:var(--ink);font-size:14px;min-height:32px}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}
+.cd div{border:1.5px solid var(--ink);border-radius:50% 46% 52% 48%;aspect-ratio:1;display:grid;place-content:center;background:var(--soft)}
+.cd b{font:700 26px Fredoka,sans-serif;line-height:1}
+.cd small{font-size:12px}
+.story{list-style:none;margin:16px 0 0;padding:0 0 0 26px;text-align:left;border-left:1.5px dashed var(--ink)}
+.story li{position:relative;margin-bottom:22px}
+.story li::before{content:"";position:absolute;left:-34px;top:6px;width:14px;height:14px;border:1.5px solid var(--ink);border-radius:50%;background:var(--cream)}
+.story h3{margin:0;font:26px/1.2 Parisienne,cursive}
+.story p{margin:2px 0 0;font-size:15px}
+.gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 14px;margin:10px -4px 0}
+.gal figure{flex:0 0 78%;scroll-snap-align:center;margin:0;border:2px solid var(--ink);padding:8px;background:#fff8ec}
+.gal figcaption{font:22px Parisienne,cursive;margin-top:4px}
+.gnav{display:flex;justify-content:center;gap:10px}
+.gnav button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:var(--cream);color:var(--ink);font-size:20px;cursor:pointer}
+.bank{margin:16px auto 0;max-width:320px;border:1.5px solid var(--ink);border-radius:18px;padding:18px;background:var(--soft)}
+.bank .num{font:700 22px Fredoka,sans-serif;letter-spacing:.06em;white-space:nowrap}
+.wish form{display:grid;gap:10px;text-align:left;margin-top:14px}
+.wish label{font-weight:700;font-size:14px}
+.wish input,.wish textarea{font:16px Nunito,sans-serif;color:var(--ink);background:#fffaf0;border:1.5px solid var(--ink);border-radius:12px;padding:10px 12px;width:100%}
+.wish textarea{min-height:90px;resize:vertical}
+.err{color:#a3262a;font-size:13px;min-height:18px}
+.wl{list-style:none;padding:0;margin:18px 0 0;text-align:left;display:grid;gap:10px;max-height:320px;overflow:auto}
+.wl li{background:#fffaf0;border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.wl b{display:block}
+.wl span{font-size:14px}
+.gone{display:none}
+.note{font-size:13px;color:var(--ink2);text-align:center;padding:14px 22px 26px}
+</style>
+</head>
+<body>
+
+<main class="phone">
+  <div class="ribbon" aria-hidden="true"><span>undangan pernikahan · Riana &amp; Hazli · undangan pernikahan · Riana &amp; Hazli · undangan pernikahan · Riana &amp; Hazli ·</span></div>
+
+  <section id="opening">
+    <div class="blob" style="width:300px;height:260px;left:50%;top:70px;transform:translateX(-50%)"></div>
+    <svg width="72" height="48" viewBox="0 0 72 48" class="doodle" style="margin:0 auto" aria-hidden="true"><circle cx="27" cy="28" r="15"/><circle cx="45" cy="28" r="15"/><path d="M40 8l5-5 5 5-5 5z"/></svg>
+    <p class="small" style="margin:8px 0 0">Undangan Pernikahan</p>
+    <h1 class="script" style="font-size:54px">Riana &amp; Hazli</h1>
+    <p style="margin:4px 0 0;font-weight:600">Sabtu, 13 Februari 2027</p>
+    <div class="to">
+      <div class="small">Kepada Yth.</div>
+      <div class="who" id="who" aria-live="polite"><span class="shimmer"></span></div>
+      <div class="small" id="whoNote">di tempat</div>
+    </div>
+    <div><button class="btn" id="openBtn" type="button">
+      <svg class="ring" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path class="doodle" d="M14 32C10 12 70 6 110 7s84 6 82 24-60 24-104 23S8 48 16 28c6-12 50-18 92-17"/></svg>
+      Buka Undangan</button></div>
+  </section>
+
+  <div id="content" class="gone">
+    <section id="hero">
+      <h2 class="bubble">Kami<br>menikah</h2>
+      <div class="frames">
+        <div class="frame"><p class="script" style="font-size:28px">Riana</p><div class="ph"><svg viewBox="0 0 80 100" aria-label="Foto dummy mempelai wanita"><rect width="80" height="100" fill="#efd9c0"/><circle cx="40" cy="40" r="15" fill="#e2c3a3"/><path d="M14 100c2-24 14-34 26-34s24 10 26 34z" fill="#e2c3a3"/></svg></div></div>
+        <div class="frame"><p class="script" style="font-size:28px">Hazli</p><div class="ph"><svg viewBox="0 0 80 100" aria-label="Foto dummy mempelai pria"><rect width="80" height="100" fill="#e6dcc6"/><circle cx="40" cy="40" r="15" fill="#d4c3a2"/><path d="M14 100c2-24 14-34 26-34s24 10 26 34z" fill="#d4c3a2"/></svg></div></div>
+      </div>
+      <p class="lead">Dengan memohon rahmat Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di hari bahagia kami.</p>
+    </section>
+
+    <section id="quote">
+      <div class="blob" style="width:340px;height:300px;left:50%;top:20px;transform:translateX(-50%)"></div>
+      <p class="ayat" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</p>
+      <p class="lead" style="font-size:15px">“Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.”</p>
+      <p class="small">QS. Ar-Rum: 21 · Terjemahan Kemenag RI</p>
+      <p class="script" style="margin-top:22px;font-size:28px">Dua langkah yang berbeda,<br>kini berjalan ke arah yang sama.</p>
+    </section>
+
+    <section id="mempelai">
+      <h2 class="bubble">Mempelai</h2>
+      <p class="script">Riana Anggraini</p>
+      <p class="small" style="margin:2px 0 18px">Putri dari Bapak Ahmad Suryadi &amp; Ibu Siti Rahmah</p>
+      <svg width="40" height="30" viewBox="0 0 40 30" class="doodle" aria-hidden="true"><path d="M20 27C6 18 4 6 12 4c4-1 7 2 8 5 1-3 4-6 8-5 8 2 6 14-8 23z"/></svg>
+      <p class="script" style="margin-top:12px">Hazli</p>
+      <p class="small" style="margin:2px 0 0">Putra dari Bapak Hendra Wijaya &amp; Ibu Nurhayati</p>
+    </section>
+
+    <section id="tanggal">
+      <h2 class="bubble">Februari</h2>
+      <div class="cal" aria-label="Tanggal 13 Februari 2027">
+        <span>9</span><span>10</span><span>11</span><span>12</span>
+        <span class="on">13<svg viewBox="0 0 50 58" aria-hidden="true"><path class="doodle" d="M25 54C2 38-2 14 12 8c6-2 11 2 13 7 2-5 7-9 13-7 14 6 10 30-13 46z"/></svg></span>
+        <span>14</span><span>15</span>
+      </div>
+      <div class="cd" id="cd" aria-label="Hitung mundur"></div>
+    </section>
+
+    <section id="acara">
+      <div class="blob" style="width:360px;height:440px;left:50%;top:70px;transform:translateX(-50%)"></div>
+      <h2 class="bubble">Acara</h2>
+      <ul class="prog" id="prog"></ul>
+    </section>
+
+    <section id="cerita">
+      <h2 class="bubble">Cerita<br>kami</h2>
+      <ul class="story">
+        <li><h3>2021 · Pertama bertemu</h3><p>Dikenalkan teman dalam sebuah acara kantor.</p></li>
+        <li><h3>2023 · Mulai serius</h3><p>Saling mengenal keluarga dan menyusun rencana bersama.</p></li>
+        <li><h3>2026 · Lamaran</h3><p>Dua keluarga bertemu dan menetapkan hari bahagia.</p></li>
+      </ul>
+    </section>
+
+    <section id="galeri">
+      <h2 class="bubble">Galeri</h2>
+      <div class="gal" id="gal" tabindex="0" aria-label="Galeri foto, geser ke samping"></div>
+      <div class="gnav"><button type="button" id="gp" aria-label="Foto sebelumnya">‹</button><button type="button" id="gn" aria-label="Foto berikutnya">›</button></div>
+    </section>
+
+    <section id="hadiah">
+      <h2 class="bubble">Hadiah</h2>
+      <p class="lead">Doa restu Anda adalah hadiah terindah. Bila ingin memberi tanda kasih, dapat melalui:</p>
+      <div class="bank">
+        <svg width="40" height="36" viewBox="0 0 40 36" class="doodle" aria-hidden="true"><rect x="5" y="14" width="30" height="19" rx="2"/><rect x="3" y="8" width="34" height="7" rx="2"/><path d="M20 8v25M20 8c-4-7-12-6-10-1 1 2 6 1 10 1 4 0 9 1 10-1 2-5-6-6-10 1"/></svg>
+        <div class="small">Bank ABC</div>
+        <div class="num" id="acc">0000 1111 22</div>
+        <div class="small">a.n. Riana Anggraini</div>
+        <button class="btn" type="button" id="copy">
+          <svg class="ring" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path class="doodle" d="M14 32C10 12 70 6 110 7s84 6 82 24-60 24-104 23S8 48 16 28c6-12 50-18 92-17"/></svg>
+          <span id="copyTxt">Salin nomor</span></button>
+      </div>
+    </section>
+
+    <section id="ucapan" class="wish">
+      <h2 class="bubble">Ucapan<br>&amp; doa</h2>
+      <form id="wf" novalidate>
+        <label for="wn">Nama</label>
+        <input id="wn" autocomplete="name">
+        <label for="wm">Ucapan</label>
+        <textarea id="wm"></textarea>
+        <div class="err" id="werr"></div>
+        <div style="text-align:center"><button class="btn" type="submit">
+          <svg class="ring" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path class="doodle" d="M14 32C10 12 70 6 110 7s84 6 82 24-60 24-104 23S8 48 16 28c6-12 50-18 92-17"/></svg>
+          Kirim Ucapan</button></div>
+      </form>
+      <ul class="wl" id="wl"></ul>
+    </section>
+
+    <section id="penutup">
+      <div class="blob" style="width:320px;height:240px;left:50%;top:30px;transform:translateX(-50%)"></div>
+      <p class="lead">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+      <p style="margin:22px 0 0">Dengan cinta,</p>
+      <p class="script" style="font-size:44px">Riana &amp; Hazli</p>
+    </section>
+    <div class="ribbon" aria-hidden="true"><span>terima kasih · Riana &amp; Hazli · terima kasih · Riana &amp; Hazli · terima kasih · Riana &amp; Hazli ·</span></div>
+    <p class="note">Prototipe dummy: nama, orang tua, tanggal, lokasi, rekening, dan foto masih contoh. Ucapan yang dikirim di sini tidak tersimpan.</p>
+  </div>
+</main>
+
+<script>
+{
+const GUESTS=[
+  {id:'G001',slug:'andi',display:'Bapak Andi dan Keluarga',cat:'Rekan kerja',to:['syukuran']},
+  {id:'G002',slug:'budi-dan-keluarga',display:'Bapak Budi Santoso & Keluarga',cat:'Keluarga',to:['akad','syukuran']},
+  {id:'G003',slug:'andi-kuliah',display:'Sdr. Andi Pratama',cat:'Teman kuliah',to:['syukuran']},
+  {id:'G004',slug:'ibu-sari',display:'Ibu Sari Wulandari',cat:'Keluarga',to:['akad','syukuran']}
+];
+const EVENTS={
+  akad:{time:'08.00',what:'Akad Nikah',where:'KUA Kecamatan Kebayoran Baru',addr:'Jl. Contoh Raya No. 1, Jakarta Selatan',q:'KUA Kebayoran Baru',
+    icon:'<path d="M12 46h40M16 46V28h32v18M14 28c0-10 8-16 18-18 10 2 18 8 18 18M32 10V4M28 46v-9a4 4 0 0 1 8 0v9"/>'},
+  syukuran:{time:'11.00',what:'Syukuran',where:'Rumah Makan Taman Sari',addr:'Jl. Melati No. 12, Jakarta Selatan',q:'Jl. Melati Jakarta Selatan',
+    icon:'<circle cx="32" cy="30" r="15"/><circle cx="32" cy="30" r="9"/><path d="M8 14v12a4 4 0 0 0 4 4v18M8 14v8M16 14v12a4 4 0 0 1-4 4M56 14c-5 3-6 10-6 16h6v18"/>'}
+};
+const $=id=>document.getElementById(id);
+const norm=s=>decodeURIComponent(s||'').trim().toLowerCase().replace(/[^a-z0-9-]+/g,'-').replace(/^-+|-+$/g,'');
+
+
+let guest=null,timer=null;
+function renderEvents(){
+  const list=guest?guest.to:['syukuran'];
+  $('prog').innerHTML=list.map(k=>{const v=EVENTS[k];
+    return `<li><svg width="64" height="56" viewBox="0 0 64 56" class="doodle" aria-hidden="true">${v.icon}</svg><div>
+    <div class="time">${v.time} WIB</div><div class="what">${v.what}</div>
+    <p><b>${v.where}</b><br>${v.addr}</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.q)}">Lihat di Google Maps ↗</a></div></li>`;}).join('');
+}
+function route(){
+  const fromPath=location.pathname.replace(/^\/+|\/+$/g,'').replace(/\.html$/,'').replace(/^index$/,'');
+  const slug=norm(fromPath||location.hash.slice(1));
+  $('who').innerHTML='<span class="shimmer"></span>';$('whoNote').textContent='memuat nama…';
+  clearTimeout(timer);
+  timer=setTimeout(()=>{
+    guest=GUESTS.find(g=>g.slug===slug)||null;
+    $('who').textContent=guest?guest.display:'Bapak/Ibu/Saudara/i';
+    $('whoNote').textContent=guest?'di tempat':(slug?'Link tidak terdaftar, sapaan umum ditampilkan':'di tempat');
+    $('wn').value=guest?guest.display:'';
+    renderEvents();
+  },1100);
+}
+window.addEventListener('hashchange',route);
+route();
+
+$('openBtn').addEventListener('click',()=>{$('content').classList.remove('gone');$('hero').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+
+const target=new Date('2027-02-13T08:00:00+07:00').getTime();
+function tick(){let d=Math.max(0,target-Date.now());const u=[['Hari',864e5],['Jam',36e5],['Menit',6e4],['Detik',1e3]];
+  $('cd').innerHTML=u.map(([l,ms])=>{const v=Math.floor(d/ms);d-=v*ms;return `<div><b>${v}</b><small>${l}</small></div>`}).join('');}
+tick();setInterval(tick,1000);
+
+const shots=['Foto 1','Foto 2','Foto 3','Foto 4','Foto 5'];
+const tones=['#efd9c0','#e6dcc6','#f0d3cf','#e3dcc2','#efd9c0'];
+$('gal').innerHTML=shots.map((s,i)=>`<figure><svg viewBox="0 0 120 150" aria-label="${s} dummy"><rect width="120" height="150" fill="${tones[i]}"/><path d="M0 150l40-50 25 28 20-18 35 40z" fill="#d9c09c"/><circle cx="88" cy="40" r="12" fill="#f6e9d2"/></svg><figcaption>${s}</figcaption></figure>`).join('');
+const step=dir=>{const g=$('gal');g.scrollBy({left:dir*g.clientWidth*0.8,behavior:'smooth'});};
+$('gp').addEventListener('click',()=>step(-1));$('gn').addEventListener('click',()=>step(1));
+$('gal').addEventListener('keydown',e=>{if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
+
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('acc').textContent.replace(/\s/g,''));$('copyTxt').textContent='Tersalin';}catch(e){$('copyTxt').textContent='Salin manual: '+$('acc').textContent;}setTimeout(()=>$('copyTxt').textContent='Salin nomor',2500);});
+
+const wishes=[{n:'Ibu Sari Wulandari',m:'Selamat menempuh hidup baru, semoga sakinah mawaddah warahmah.'},{n:'Sdr. Andi Pratama',m:'Barakallah, ikut bahagia! Semoga lancar sampai hari H.'}];
+function drawW(){const ul=$('wl');ul.textContent='';wishes.forEach(w=>{const li=document.createElement('li');const b=document.createElement('b');b.textContent=w.n;const s=document.createElement('span');s.textContent=w.m;li.append(b,s);ul.append(li);});}
+drawW();
+const clr=()=>$('werr').textContent='';$('wn').addEventListener('input',clr);$('wm').addEventListener('input',clr);
+$('wf').addEventListener('submit',e=>{e.preventDefault();const n=$('wn').value.trim(),m=$('wm').value.trim();
+  if(!n||!m){$('werr').textContent=!n?'Isi nama terlebih dahulu':'Tulis ucapan terlebih dahulu';return;}
+  wishes.unshift({n,m});drawW();$('wm').value='';});
+}
+</script>
+</body>
+</html>
